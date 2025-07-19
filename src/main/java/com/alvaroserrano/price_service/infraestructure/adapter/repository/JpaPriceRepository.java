@@ -2,6 +2,7 @@ package com.alvaroserrano.price_service.infraestructure.adapter.repository;
 
 import com.alvaroserrano.price_service.domain.model.PriceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -20,5 +21,10 @@ public interface JpaPriceRepository extends JpaRepository<PriceEntity, Long> {
      * @param brandId the ID of the brand for which to find the price
      * @return an Optional containing the applicable Price if found, or empty if not found
      */
+    @Query("SELECT p from PriceEntity p " +
+           "WHERE p.productId = :productId " +
+           "AND p.brandId = :brandId " +
+           "and :applicationDate BETWEEN p.startDate AND p.endDate " +
+           "order by p.priority DESC")
     Optional<PriceEntity> findApplicablePrice(LocalDateTime date, Integer productId, Integer brandId);
 }
