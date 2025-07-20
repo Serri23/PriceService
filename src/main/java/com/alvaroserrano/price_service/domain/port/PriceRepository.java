@@ -10,5 +10,5 @@ import java.util.Optional;
  */
 public interface PriceRepository {
 
-    Optional<PriceEntity> findApplicablePrice(LocalDateTime date, Integer productId, Integer brandId);
+    Optional<PriceEntity> findApplicablePrice(LocalDateTime applicationDate, Integer productId, Integer brandId);
 }
