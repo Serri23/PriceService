@@ -2,6 +2,7 @@ package com.alvaroserrano.price_service.infraestructure.adapter.repository;
 
 import com.alvaroserrano.price_service.domain.model.PriceEntity;
 import com.alvaroserrano.price_service.domain.port.PriceRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
@@ -12,20 +13,13 @@ import java.util.Optional;
  * Repository implementation for PriceRepository.
  */
 @Repository
+@AllArgsConstructor
 public class PriceRepositoryImpl implements PriceRepository {
 
     /**
      * JpaPriceRepository is an interface that extends JpaRepository to provide CRUD operations
      */
     JpaPriceRepository jpaPriceRepository;
-
-    /**
-     * Constructor for PriceRepositoryImpl.
-     * @param jpaPriceRepository the JpaPriceRepository to use for database operations
-     */
-    public PriceRepositoryImpl(JpaPriceRepository jpaPriceRepository) {
-        this.jpaPriceRepository = jpaPriceRepository;
-    }
 
     /**
      * Finds the applicable price for a given date, product ID, and brand ID.

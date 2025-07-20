@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  * Controller for handling price-related requests.
  */
 @RestController
-@RequestMapping("/api/prices")
+@RequestMapping("/api")
 @AllArgsConstructor
 public class PriceController {
 
@@ -33,7 +33,7 @@ public class PriceController {
      * @param brandId the ID of the brand for which the price is requested
      * @return a ResponseEntity containing the PriceResponse if found, or a 404 Not Found status if not found
      */
-    @GetMapping
+    @GetMapping("/prices")
     public ResponseEntity<PriceResponse> getPrice(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
             @RequestParam Integer productId,
