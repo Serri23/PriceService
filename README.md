@@ -20,6 +20,7 @@ PriceService es una API REST que permite consultar el precio aplicable de un pro
 - **H2 Database** (base de datos en memoria para pruebas)
 - **JPA/Hibernate** (para el acceso a datos)
 - **Lombok** (para reducir código repetitivo)
+- **Swagger** (para documentación de la API)
 
 ## Requisitos previos
 
@@ -41,7 +42,7 @@ PriceService es una API REST que permite consultar el precio aplicable de un pro
     ```bash
     mvn spring-boot:run
 
-4. Accede a la API en `http://localhost:8081/api/prices`.
+4. Accede a la API mediante Swagger `http://localhost:8081/swagger-ui.html`.
 5. Realiza peticiones GET a la API con los parámetros necesarios:
     - `productId`: ID del producto.
     - `brandId`: ID de la marca.

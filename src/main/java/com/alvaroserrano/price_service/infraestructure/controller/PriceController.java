@@ -2,6 +2,7 @@ package com.alvaroserrano.price_service.infraestructure.controller;
 
 import com.alvaroserrano.price_service.infraestructure.dto.PriceResponse;
 import com.alvaroserrano.price_service.service.PriceService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -33,14 +34,13 @@ public class PriceController {
      * @param brandId the ID of the brand for which the price is requested
      * @return a ResponseEntity containing the PriceResponse if found, or a 404 Not Found status if not found
      */
+    @Operation(summary = "Get price by application date, product ID, and brand ID",
+            description = "Retrieves the price for a given application date, product ID, and brand ID.")
     @GetMapping("/prices")
     public ResponseEntity<PriceResponse> getPrice(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
             @RequestParam Integer productId,
             @RequestParam Integer brandId){
-
-        return priceService.getPrice(applicationDate, productId, brandId)
-                .map(price -> new ResponseEntity<>(price, HttpStatus.OK))
-                .orElse(ResponseEntity.notFound().build());
+        return new ResponseEntity<>(priceService.getPrice(applicationDate, productId, brandId), HttpStatus.OK);
     }
 }

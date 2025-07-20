@@ -2,11 +2,11 @@ package com.alvaroserrano.price_service.service;
 
 import com.alvaroserrano.price_service.domain.port.PriceRepository;
 import com.alvaroserrano.price_service.infraestructure.dto.PriceResponse;
+import com.alvaroserrano.price_service.infraestructure.exception.PriceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 /**
  * Service class for handling price-related operations.
@@ -20,9 +20,10 @@ public class PriceService {
      */
     private final PriceRepository priceRepository;
 
-    public Optional<PriceResponse> getPrice(LocalDateTime applicationDate, Integer productId, Integer brandId) {
+    public PriceResponse getPrice(LocalDateTime applicationDate, Integer productId, Integer brandId) {
         return priceRepository.findApplicablePrice(applicationDate, productId, brandId)
-                .map(PriceResponse::toDomain);
+                .map(PriceResponse::toDomain)
+                .orElseThrow(() -> new PriceNotFoundException("Price not found for the given parameters."));
     }
 
 }
