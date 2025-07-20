@@ -1,7 +1,5 @@
 package com.alvaroserrano.price_service.infraestructure.controller;
 
-import com.alvaroserrano.price_service.PriceServiceApplication;
-import com.alvaroserrano.price_service.domain.port.PriceRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +11,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(
-        classes = PriceServiceApplication.class,
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
-)
+@SpringBootTest
 @AutoConfigureMockMvc
 class PriceControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private PriceRepository priceRepository;
 
     @Test
     @DisplayName("Test 1: 14/06/2020 10:00 - product 35455 - brand 1")
