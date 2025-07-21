@@ -1,6 +1,7 @@
 package com.alvaroserrano.price_service.infraestructure.dto;
 
 import com.alvaroserrano.price_service.domain.model.PriceEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,11 +18,17 @@ import java.time.LocalDateTime;
  * @param price
  */
 public record PriceResponse(
+        @Schema(example = "35455", description = "Product ID")
         Integer productId,
+        @Schema(example = "1", description = "Brand ID")
         Integer brandId,
+        @Schema(example = "1", description = "Price List ID")
         Integer priceList,
+        @Schema(example = "2020-06-14T10:00:00", description = "Start Date of the Price")
         LocalDateTime startDate,
+        @Schema(example = "2020-12-31T23:59:59", description = "End Date of the Price")
         LocalDateTime endDate,
+        @Schema(example = "35.50", description = "Price in Euros")
         BigDecimal price
 ) {
 

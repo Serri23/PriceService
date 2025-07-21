@@ -3,6 +3,7 @@ package com.alvaroserrano.price_service.infraestructure.controller;
 import com.alvaroserrano.price_service.infraestructure.dto.PriceResponse;
 import com.alvaroserrano.price_service.service.PriceService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -39,8 +40,8 @@ public class PriceController {
     @GetMapping("/prices")
     public ResponseEntity<PriceResponse> getPrice(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
-            @RequestParam Integer productId,
-            @RequestParam Integer brandId){
+            @RequestParam @NotNull Integer productId,
+            @RequestParam @NotNull Integer brandId){
         return new ResponseEntity<>(priceService.getPrice(applicationDate, productId, brandId), HttpStatus.OK);
     }
 }
