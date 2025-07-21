@@ -31,7 +31,7 @@ PriceService es una API REST que permite consultar el precio aplicable de un pro
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/x357496-sgt_sangroup/PriceService.git
+   git clone https://github.com/Serri23/PriceService.git
    cd PriceService
    
 2. Compila el proyecto:
